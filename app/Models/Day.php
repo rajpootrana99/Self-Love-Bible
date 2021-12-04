@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Day extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'topic_id',
+        'month_id',
+        'day',
+        'detail',
+    ];
+
+    public function topic(){
+        return $this->belongsTo(Topic::class);
+    }
+    public function month(){
+        return $this->belongsTo(Month::class);
+    }
+    public function challenges(){
+        return $this->hasMany(Challenge::class);
+    }
+}
